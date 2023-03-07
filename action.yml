@@ -1,4 +1,4 @@
-name: 'Serverless with Python Requirements'
+name: 'FORK: Serverless with Python Requirements (with Working Directory)'
 description: 'Javascript action that runs a Serverless deploy using the serverless-python-requirements plugin.'
 
 runs:
