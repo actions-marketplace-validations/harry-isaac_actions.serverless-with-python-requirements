@@ -1,4 +1,6 @@
 {
+  "name": "actions.serverless-with-python-requirements",
+  "version": "1.0.0",
   "dependencies": {
     "@actions/core": "^1.10.0",
     "exeq": "^3.0.0",
