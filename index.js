@@ -10,9 +10,13 @@ var DOMAIN_MANAGER = core.getInput('domain-manager')
 
 //  Enters custom working directory if specified
 async function selectDirectory() {
+  await exeq(
+    `echo Working directory '${process.env.WORKING_DIRECTORY}'...`
+  )
   if (!process.env.WORKING_DIRECTORY) return
 
   await exeq(
+    `echo Setting working directory to '${process.env.WORKING_DIRECTORY}'...`,
     `cd ${process.env.WORKING_DIRECTORY}`
   )
 }
