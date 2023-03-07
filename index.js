@@ -8,6 +8,15 @@ var exeq = require('exeq')
 var CANARY_DEPLOYMENTS = core.getInput('canary-deployments')
 var DOMAIN_MANAGER = core.getInput('domain-manager')
 
+//  Enters custom working directory if specified
+async function selectDirectory() {
+  if (!process.env.WORKING_DIRECTORY) return
+
+  await exeq(
+    `cd ${process.env.WORKING_DIRECTORY}`
+  )
+}
+
 //  Installs Serverless and specified plugins
 async function installServerlessAndPlugins() {
   await exeq(
@@ -32,10 +41,11 @@ async function runServerlessDeploy() {
 //  Runs all functions sequentially
 async function handler() {
   try {
+    await selectDirectory()
     await installServerlessAndPlugins()
     await runServerlessDeploy()
   } catch (error) {
-    core.setFailed(error.message);
+    core.setFailed(error.message)
   }
 }
 
